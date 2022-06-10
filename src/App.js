@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Create from './diseases/pages/Create/Create';
+import Feed from './diseases/pages/Feed/Feed';
+import Header from './shared/components/Header/Header';
+import Symptoms from './diseases/pages/Symptoms/Symptoms';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Header showAddBtn={false} />
+      <Routes>
+        <Route exact path='/' element={<Feed />} />
+        <Route exact path='/create' element={<Create />} />
+        <Route exact path='/symptoms' element={<Symptoms />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App;
